@@ -1,6 +1,10 @@
 #!/bin/bash
 
 cdir=`cd $(dirname $0); pwd`
+if [ ! -f $cdir/heartbeat-7.7.1-x86_64.rpm ]; then
+    echo "download heartbeat-7.7.1-x86_64.rpm first from ES official site"
+    exit 1
+fi
 rpm -iv $cdir/heartbeat-7.7.1-x86_64.rpm
 
 cp -r heartbeat.yml monitors.d /etc/heartbeat
